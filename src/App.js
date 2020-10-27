@@ -4,6 +4,9 @@ import {
   Route,
 } from "react-router-dom";
 import Header from './components/Header/Header';
+import Subscribe from './components/Subscribe/Subscribe';
+import Footer from './components/Footer/Footer';
+import CopyRight from './components/CopyRight/CopyRight';
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import './App.css';
@@ -24,6 +27,10 @@ function App() {
             <Home />
           </Route>
         </Switch>
+
+        <Subscribe />
+        <Footer />
+        <CopyRight />
       </div>
     </Router>
   );

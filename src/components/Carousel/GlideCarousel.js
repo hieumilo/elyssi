@@ -4,7 +4,16 @@ import Glide from '@glidejs/glide'
 import '@glidejs/glide/dist/css/glide.core.min.css'
 import '@glidejs/glide/dist/css/glide.theme.min.css'
 
-const GlideCarousel = ({element, options, childrens, dotStyle, showDot}) => {
+const GlideCarousel = ({
+  element,
+  options,
+  childrens,
+  dotStyle,
+  showDot,
+  glideSlideStyle,
+  showControll,
+  className,
+}) => {
   const [slider] = useState(new Glide(`.${element}`, options))
   useEffect(() => {
     slider.mount()
@@ -20,11 +29,11 @@ const GlideCarousel = ({element, options, childrens, dotStyle, showDot}) => {
   }, [])
   return (
     <div x-data="true" x-init="collectionSliders">
-      <div className={`${element} relative`} x-data="true">
+      <div className={`${element} relative ${className}`} x-data="true">
         <div className="glide__track" data-glide-el="track">
           <div className="glide__slides">
             {childrens && childrens.map((item, key) => (
-              <div className="glide__slide" key={key}>
+              <div className={`glide__slide ${glideSlideStyle}`} key={key}>
                 {item}
               </div>
             ))}
@@ -41,6 +50,16 @@ const GlideCarousel = ({element, options, childrens, dotStyle, showDot}) => {
             ))}
           </div>
         )}
+        {showControll && (
+          <div data-glide-el="controls">
+            <div className="transition-all shadow-md rounded-full absolute left-25 sm:left-35 md:left-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group" data-glide-dir="<">
+              <i className="bx bx-chevron-left text-primary transition-colors group-hover:text-white text-2xl p-4 md:p-2 lg:p-4"></i>
+            </div>
+            <div className="transition-all shadow-md rounded-full absolute right-25 sm:right-35 md:right-0 top-0 md:top-50 transform -translate-y-1/2 bg-grey hover:bg-primary border border-grey-dark z-30 cursor-pointer group" data-glide-dir=">">
+              <i className="bx bx-chevron-right text-primary transition-colors group-hover:text-white text-2xl p-4 md:p-2 lg:p-4"></i>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -51,6 +70,9 @@ GlideCarousel.defaultProps = {
   options: {},
   childrens: [],
   showDot: false,
+  glideSlideStyle: '',
+  showControll: false,
+  className: '',
 }
 
 GlideCarousel.propTypes = {
@@ -58,6 +80,9 @@ GlideCarousel.propTypes = {
   childrens: PropTypes.array,
   dotStyle: PropTypes.string,
   showDot: PropTypes.bool,
+  glideSlideStyle: PropTypes.string,
+  showControll: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default GlideCarousel
