@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import CopyRight from './components/CopyRight/CopyRight';
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
+import ProductList from './pages/ProductList/ProductList'
 import './App.css';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/:slug">
+            <ProductList />
           </Route>
           <Route path="/">
             <Home />

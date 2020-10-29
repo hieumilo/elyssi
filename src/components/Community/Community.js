@@ -10,14 +10,15 @@ import brand6 from './../../assets/img/brand-06.png'
 const Communities = [brand1, brand2, brand3, brand4, brand5, brand6]
 
 const Community = () => (
-  <div class="pt-16 sm:pt-20 pb-5 sm:pb-12 border-b border-grey-dark">
-    <h4 class="font-hkregular text-xl text-secondary uppercase text-center">
+  <div className="pt-16 sm:pt-20 pb-5 sm:pb-12 border-b border-grey-dark">
+    <h4 className="font-hkregular text-xl text-secondary uppercase text-center">
       Our community
     </h4>
-    <div class="flex flex-wrap items-center justify-center pt-8 -mx-5">
-      {Communities.map((brand) => (
+    <div className="flex flex-wrap items-center justify-center pt-8 -mx-5">
+      {Communities.map((brand, key) => (
         <div
-          class="bg-center bg-no-repeat bg-cover w-1/2 sm:w-1/3 lg:w-1/6 h-24 mb-8 sm:mb-10 lg:mb-0"
+          key={key}
+          className="bg-center bg-no-repeat bg-cover w-1/2 sm:w-1/3 lg:w-1/6 h-24 mb-8 sm:mb-10 lg:mb-0"
           style={{backgroundImage: `url(${brand})`}}>
         </div>
       ))}

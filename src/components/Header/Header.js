@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Menu from './../Menu/Menu'
 import imgLogo from './../../assets/img/logo-elyssi.svg'
 import imgSearch from './../../assets/img/icons/icon-search.svg'
@@ -9,33 +11,46 @@ import imgUserHover from './../../assets/img/icons/icon-user-hover.svg'
 import imgCart from './../../assets/img/icons/icon-cart.svg'
 import imgCartHover from './../../assets/img/icons/icon-cart-hover.svg'
 
-const menus = [
-  {url: '#', name: 'Man', childrens: [
-    {url: '/collection-grid', name: 'Boots'},
-    {url: '/collection-grid', name: 'Blutcher Boot'},
-    {url: '/collection-grid', name: 'Chelsea Boot'},
-    {url: '/collection-grid', name: 'Chukka Boot'},
-    {url: '/collection-grid', name: 'Dress Boot'},
-    {url: '/collection-grid', name: 'Work Boot'},
-  ]},
-  {url: '#', name: 'Woman', childrens: [
-    {url: '/collection-grid', name: 'Accessories'},
-    {url: '/collection-grid', name: 'Belts'},
-    {url: '/collection-grid', name: 'Caps'},
-    {url: '/collection-grid', name: 'Laces'},
-    {url: '/collection-grid', name: 'Socks'},
-  ]},
-  {url: '#', name: 'Kids', childrens: [
-    {url: '/collection-grid', name: 'Shoes'},
-    {url: '/collection-grid', name: 'Derby Shoes'},
-    {url: '/collection-grid', name: 'Belts'},
-    {url: '/collection-grid', name: 'Caps'},
-    {url: '/collection-grid', name: 'Laces'},
-    {url: '/collection-grid', name: 'Socks'},
-  ]},
-]
+// const menus = [
+//   {url: '#', name: 'Man', childrens: [
+//     {url: '/collection-grid', name: 'Boots'},
+//     {url: '/collection-grid', name: 'Blutcher Boot'},
+//     {url: '/collection-grid', name: 'Chelsea Boot'},
+//     {url: '/collection-grid', name: 'Chukka Boot'},
+//     {url: '/collection-grid', name: 'Dress Boot'},
+//     {url: '/collection-grid', name: 'Work Boot'},
+//   ]},
+//   {url: '#', name: 'Woman', childrens: [
+//     {url: '/collection-grid', name: 'Accessories'},
+//     {url: '/collection-grid', name: 'Belts'},
+//     {url: '/collection-grid', name: 'Caps'},
+//     {url: '/collection-grid', name: 'Laces'},
+//     {url: '/collection-grid', name: 'Socks'},
+//   ]},
+//   {url: '#', name: 'Kids', childrens: [
+//     {url: '/collection-grid', name: 'Shoes'},
+//     {url: '/collection-grid', name: 'Derby Shoes'},
+//     {url: '/collection-grid', name: 'Belts'},
+//     {url: '/collection-grid', name: 'Caps'},
+//     {url: '/collection-grid', name: 'Laces'},
+//     {url: '/collection-grid', name: 'Socks'},
+//   ]},
+// ]
 
 function Header() {
+
+  const [menus, setMenus] = useState([])
+
+  async function getCategories() {
+    const data = await fetch("/api/categories")
+      .then(res => res.json());
+    setMenus(data);
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <div className="container py-10 relative">
       <div className="flex justify-between items-center">
@@ -71,9 +86,9 @@ function Header() {
             </a>
           </div>
         </div>
-        <a href="/">
+        <Link to="/">
           <img src={imgLogo} className="w-48 h-auto" alt="logo" />
-        </a>
+        </Link>
         <div className="hidden lg:block">
           <div className="flex items-center">
             <a

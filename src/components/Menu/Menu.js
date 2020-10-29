@@ -38,11 +38,11 @@ const Menu = ({menus}) => (
                 {(menu.childrens || []).length > 0 && <ul>
                   {menu.childrens.map((chilMenu, childKey) => (
                     <li key={`${key}-${childKey}`}>
-                      <a
-                        href={chilMenu.url}
+                      <Link
+                        to={chilMenu.url}
                         className="text-sm font-hkregular text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">
                         {chilMenu.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>}

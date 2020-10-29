@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import GlideCarousel from './GlideCarousel';
-import ProductItem from './ProductItem';
+import ProductGridItem from './../Product/ProductGridItem';
 
 const options = {
   type: "carousel",
@@ -40,9 +40,9 @@ const options = {
 const ProductCarousel = ({items, name}) => {
   const [carouselItems, setCarouselItems] = useState([])
   useEffect(() => {
-    let a = items.map((item, key) => (
-      <React.Fragment  key={key}>
-        <ProductItem item={item} />
+    let a = items.map((product, key) => (
+      <React.Fragment key={key}>
+        <ProductGridItem product={product} />
       </React.Fragment>
     ))
 
