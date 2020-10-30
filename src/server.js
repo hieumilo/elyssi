@@ -42,6 +42,13 @@ new Server({
       // return schema.products.all()
     })
 
+    this.get("/products/:slug", (schema, request) => {
+      let slug = request.params.slug
+        
+      const products = schema.db.products;
+      return products.findBy({slug: slug})
+    })
+
     this.passthrough();
   },
 
@@ -85,7 +92,7 @@ new Server({
           'https://source.unsplash.com/1000x640/?k-' + (Math.floor(Math.random() * 10) + 1),
           'https://source.unsplash.com/1000x640/?k-' + (Math.floor(Math.random() * 10) + 1),
         ],
-        short_decription: 'Versatile, comfortable, and chic! Three words that describe Blake by Elyssi.',
+        short_description: 'Versatile, comfortable, and chic! Three words that describe Blake by Elyssi.',
         description: 'Lorem, ipsum dolor sit amet, consectetur adipisicing elit. Accusamus possimus, quo, fugit expedita corrupti, recusandae fuga asperiores non quos sint quia quis cumque magnam quod tenetur maxime rerum. Eum, alias.',
         additional_information: `On the main compartment has multiple pockets available for your tools, chargers, make up, keys, etc. <br><br>  Size::13.4”Lx 6.5”W x 15.4”H. <br> Weight: 1.57pounds. <br> Color: light brown.`,
         colors: ['#f35627', '#37241f', '#31c643', '#27d4f3'],

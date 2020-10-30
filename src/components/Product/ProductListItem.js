@@ -27,7 +27,7 @@ function ProductListItem ({product}) {
           <span className="font-hkbold text-secondary text-xl block pt-1">${product.price}</span>
           <span className="pt-4 font-hkbold text-v-green text-base block">{product.availability}</span>
           <p className="font-hkregular text-grey-darkest pt-2 text-sm xl:text-base">
-            {product.short_decription}
+            {product.short_description}
           </p>
           <ProductItemRate product={product} className="pt-3 xl:pt-5" />
         </div>
