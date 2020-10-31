@@ -42,6 +42,22 @@ new Server({
       // return schema.products.all()
     })
 
+      this.get("/cart", (schema, request) => {
+          const pageSize = 5
+
+          const products = schema.db.products;
+
+          if (Number(pageSize)) {
+              const start = 0
+              const end = Number(pageSize)
+              const page = products.slice(start, end)
+
+              return page
+          }
+          return products
+          // return schema.products.all()
+      })
+
     this.get("/products/:slug", (schema, request) => {
       let slug = request.params.slug
         
