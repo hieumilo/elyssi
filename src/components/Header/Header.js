@@ -105,8 +105,8 @@ function Header() {
                 alt="icon user hover"
               />
             </a>
-            <a
-              href="/cart"
+            <Link
+              to="/cart"
               className="border-2 transition-all border-transparent hover:border-primary rounded-full px-4 py-4 ml-8 group">
               <img
                 src={imgCart}
@@ -118,7 +118,7 @@ function Header() {
                 className="w-8 h-8 hidden group-hover:block"
                 alt="icon cart hover"
               />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="block lg:hidden">
