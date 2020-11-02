@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Menu from './../Menu/Menu'
+import MenuDesktop from './../Menu/MenuDesktop'
+import MenuMobile from './../Menu/MenuMobile'
 import imgLogo from './../../assets/img/logo-elyssi.svg'
 import imgSearch from './../../assets/img/icons/icon-search.svg'
 import imgSearchHover from './../../assets/img/icons/icon-search-hover.svg'
@@ -11,35 +12,9 @@ import imgUserHover from './../../assets/img/icons/icon-user-hover.svg'
 import imgCart from './../../assets/img/icons/icon-cart.svg'
 import imgCartHover from './../../assets/img/icons/icon-cart-hover.svg'
 
-// const menus = [
-//   {url: '#', name: 'Man', childrens: [
-//     {url: '/collection-grid', name: 'Boots'},
-//     {url: '/collection-grid', name: 'Blutcher Boot'},
-//     {url: '/collection-grid', name: 'Chelsea Boot'},
-//     {url: '/collection-grid', name: 'Chukka Boot'},
-//     {url: '/collection-grid', name: 'Dress Boot'},
-//     {url: '/collection-grid', name: 'Work Boot'},
-//   ]},
-//   {url: '#', name: 'Woman', childrens: [
-//     {url: '/collection-grid', name: 'Accessories'},
-//     {url: '/collection-grid', name: 'Belts'},
-//     {url: '/collection-grid', name: 'Caps'},
-//     {url: '/collection-grid', name: 'Laces'},
-//     {url: '/collection-grid', name: 'Socks'},
-//   ]},
-//   {url: '#', name: 'Kids', childrens: [
-//     {url: '/collection-grid', name: 'Shoes'},
-//     {url: '/collection-grid', name: 'Derby Shoes'},
-//     {url: '/collection-grid', name: 'Belts'},
-//     {url: '/collection-grid', name: 'Caps'},
-//     {url: '/collection-grid', name: 'Laces'},
-//     {url: '/collection-grid', name: 'Socks'},
-//   ]},
-// ]
-
 function Header() {
-
   const [menus, setMenus] = useState([])
+  const [showMenuMobile, setShowMenuMobile] = useState(false)
 
   async function getCategories() {
     const data = await fetch("/api/categories")
@@ -121,11 +96,12 @@ function Header() {
             </Link>
           </div>
         </div>
-        <div className="block lg:hidden">
+        <div className="block lg:hidden" onClick={() => setShowMenuMobile(true)}>
           <i className="bx bx-menu text-primary text-3xl"></i>
         </div>
       </div>
-      <Menu menus={menus}/>
+      <MenuDesktop menus={menus}/>
+      <MenuMobile menus={menus} showMenuMobile={showMenuMobile} setShowMenuMobile={setShowMenuMobile}/>
     </div>
   );
 }

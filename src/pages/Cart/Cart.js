@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import CartItem from './../../components/Cart/CartItem'
 import CartList from './../../components/Cart/CartList'
 import CartTotal from './../../components/Cart/CartTotal'
 import CartBreadCrumb from './../../components/Cart/CartBreadCrumb'

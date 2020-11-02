@@ -1,3 +1,4 @@
+/*eslint array-callback-return: ["error", { allowImplicit: true }]*/
 import { Server, Model, RestSerializer } from "miragejs";
 
 new Server({
@@ -125,6 +126,7 @@ new Server({
         isFavotire: false,
         discount: 20,
       });
+      return;
     })
   }
 });

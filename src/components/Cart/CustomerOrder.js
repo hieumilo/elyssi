@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
 import CustomerOrderItem from "./CustomerOrderItem";
 
 function CustomerOrder(){
-    const [product, setProduct] = useState([])
+  const [product, setProduct] = useState([])
 
-    async function getProductDetail() {
-        const data = await fetch(`/api/cart`)
-            .then(res => res.json());
-        console.log(data, 'product');
-        setProduct(data)
-    }
+  async function getProductDetail() {
+    const data = await fetch(`/api/cart`)
+      .then(res => res.json());
+    setProduct(data)
+  }
 
-    useEffect(() => {
-        getProductDetail();
-    }, []);
+  useEffect(() => {
+    getProductDetail();
+  }, []);
+  
   return (
   <div className="sm:w-2/3 md:w-1/2 lg:w-1/3 bg-grey-light mt-8 lg:mt-0">
     <div className="p-8">
       <h4 className="font-hkbold text-secondary text-2xl pb-3 text-center sm:text-left">
-        Your Order</h4>
+      Your Order</h4>
       <p className="font-hkbold text-secondary uppercase text-center sm:text-left">
-        PRODUCTS</p>
+      PRODUCTS</p>
       <div className="mt-5 mb-8">
-
-
-          {product && product.map((product, key) => <CustomerOrderItem product={product} key={key}/>)}
+        {product && product.map((product, key) => <CustomerOrderItem product={product} key={key}/>)}
       </div>
       <p className="font-hkbold text-secondary pt-1 pb-2">Cart Totals</p>
       <div className="border-b border-grey-darker pb-1 flex justify-between">
@@ -42,7 +38,6 @@ function CustomerOrder(){
         <span className="font-hkbold text-secondary">$200</span>
       </div>
     </div>
-
   </div>
 )}
 
@@ -50,7 +45,6 @@ CustomerOrder.defaultProps = {
 }
 
 CustomerOrder.propTypes = {
-
 };
 
 export default CustomerOrder

@@ -10,13 +10,13 @@ function ProductFilter({setView}) {
           Filter
         </p>
         <div className="flex items-center border border-grey-darker p-2 rounded">
-          <a onClick={() => setView(VIEW[0])}>
+          <button type="button" onClick={() => setView(VIEW[0])}>
             <i className="bx bx-menu text-grey-darker hover:text-secondary-light text-xl leading-none block transition-colors"></i>
-          </a>
+          </button>
           <div className="w-px h-4 mx-2 bg-grey-darker"></div>
-          <a onClick={() => setView(VIEW[1])}>
+          <button type="button" onClick={() => setView(VIEW[1])}>
             <i className="bx bxs-grid text-grey-darker hover:text-secondary-light text-xl leading-none block transition-colors"></i>
-          </a>
+          </button>
         </div>
       </div>
       <div className="flex items-center justify-center sm:justify-end mt-6 sm:mt-0 w-76">

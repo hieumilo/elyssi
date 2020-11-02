@@ -7,21 +7,21 @@ import iconHeart from './../../assets/img/icons/icon-heart.svg'
 
 const ProductListItemHover = ({product}) => (
   <Fragment>
-    <a
-      href="#"
+    <button
+      type="button"
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
       <img src={iconCart} className="h-6 w-6" alt="icon cart" />
-    </a>
+    </button>
     <Link
       to={`/p/${product.slug}`}
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
       <img src={iconSearch} className="h-6 w-6" alt="icon search" />
     </Link>
-    <a
-      href="#"
+    <button>
+      type="button"
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all">
       <img src={iconHeart} className="h-6 w-6" alt="icon heart" />
-    </a>
+    </button>
   </Fragment>
 )
 
