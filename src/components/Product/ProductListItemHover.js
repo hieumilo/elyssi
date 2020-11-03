@@ -7,8 +7,8 @@ import iconHeart from './../../assets/img/icons/icon-heart.svg'
 
 const ProductListItemHover = ({product}) => (
   <Fragment>
-    <button
-      type="button"
+    <button 
+      type="button" 
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
       <img src={iconCart} className="h-6 w-6" alt="icon cart" />
     </button>
@@ -17,7 +17,7 @@ const ProductListItemHover = ({product}) => (
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
       <img src={iconSearch} className="h-6 w-6" alt="icon search" />
     </Link>
-    <button>
+    <button
       type="button"
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all">
       <img src={iconHeart} className="h-6 w-6" alt="icon heart" />
