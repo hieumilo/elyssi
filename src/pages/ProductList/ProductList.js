@@ -10,7 +10,7 @@ import queryString from 'query-string'
 import { VIEW } from './../../utils/constant'
 
 function ProductList () {
-  let { slug } = useParams();
+  let { category, slug } = useParams();
   const [view, setView] = useState(VIEW[0])
   const [products, setProducts] = useState({})
   const [params] = useState({
@@ -18,14 +18,18 @@ function ProductList () {
     page: 1,
   })
 
-  async function getProducts(slug) {
-    const data = await fetch(`/api/${slug}/products?${queryString.stringify(params)}`, )
+  async function getProducts(category, slug) {
+    let url = `/api/${category}?${queryString.stringify(params)}`;
+    if (slug) {
+      url = `/api/${category}/${slug}?${queryString.stringify(params)}`
+    }
+    const data = await fetch(url)
       .then(res => res.json());
     setProducts(data)
   }
 
   useEffect(() => {
-    getProducts(slug);
+    getProducts(category, slug);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 

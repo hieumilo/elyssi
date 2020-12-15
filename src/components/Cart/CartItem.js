@@ -7,7 +7,7 @@ function CartItem ({product}) {
       <div className="w-1/2 lg:w-3/5 xl:w-1/2 flex flex-row items-center border-b-0 border-grey-dark pt-0 pb-0 text-left">
         <div className="w-20 mx-0 relative pr-0">
           <div className="h-20 rounded flex items-center justify-center">
-            <div className="w-16 h-16 mx-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url(${product.images[0]})`}}>
+            <div className="w-16 h-16 mx-auto bg-center bg-no-repeat bg-cover" style={{backgroundImage: `url(${product.thumbnail.url})`}}>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@ function CartItem ({product}) {
       </div>
       <div className="w-1/4 lg:w-1/5 xl:w-1/4 text-right pr-10
           xl:pr-10 pb-4">
-        <span className="font-hkregular text-secondary">${product.price}</span>
+        <span className="font-hkregular text-secondary">${product.price_range?.maximum_price?.regular_price?.value}</span>
       </div>
     </div>
   )

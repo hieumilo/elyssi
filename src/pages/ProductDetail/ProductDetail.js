@@ -12,7 +12,6 @@ function ProductList () {
   async function getProductDetail(slug) {
     const data = await fetch(`/api/products/${slug}`)
       .then(res => res.json());
-    console.log(data, 'product');
     setProduct(data)
   }
 
@@ -24,13 +23,13 @@ function ProductList () {
     <div className="container">
       <ProductBanner />
       <div className="pt-16 pb-24 flex flex-col lg:flex-row justify-between -mx-5">
-        <ProductImage images={product.images || []}/>
+        <ProductImage images={product.media_gallery || []}/>
         <ProductDetail product={product}/>
       </div>
       <ProductTabs
         description={product.description}
         additionalInformation={product.additional_information}
-        reviews={product.reviews}
+        reviews={product.reviews?.items || []}
       />
     </div>
   )

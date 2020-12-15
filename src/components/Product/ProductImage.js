@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 function ProductImage({images}) {
-  const [selectedImage, setSelectedImage] = useState('')
+  const [selectedImage, setSelectedImage] = useState({})
   useEffect(() => {
     if (images.length > 0) {
       setSelectedImage(images[0])
@@ -17,7 +17,7 @@ function ProductImage({images}) {
             <div className="bg-v-pink border border-grey relative h-28 rounded flex items-center justify-center">
               <div
                 className="w-16 h-20 my-3 bg-center bg-no-repeat bg-cover cursor-pointer"
-                style={{backgroundImage: `url(${image})`}}
+                style={{backgroundImage: `url(${image.url})`}}
                 onClick={() => setSelectedImage(image)}
               >
               </div>
@@ -29,7 +29,7 @@ function ProductImage({images}) {
         <div className="bg-v-pink border border-grey relative h-80 sm:h-94 xl:h-96 rounded flex items-center justify-center">
           <div
             className="w-56 xl:w-64 h-76 sm:h-82 xl:h-86 my-6 sm:my-12 xl:my-24 bg-center bg-no-repeat bg-cover"
-            style={{backgroundImage: `url(${selectedImage})` }}>
+            style={{backgroundImage: `url(${selectedImage.url})` }}>
           </div>
         </div>
       </div>

@@ -32,14 +32,16 @@ const MenuDesktop = ({menus}) => {
             <div className="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all flex bg-white shadow-lg p-8 rounded-b relative">
               {menus.map((menu, key) => (
                 <div className="flex-1 relative z-20" key={key}>
-                  <h4 className="font-hkbold text-base text-secondary mb-2">
+                  <Link
+                    to={`/${menu.url_path}`}
+                    className="font-hkbold text-base text-secondary mb-2">
                     {menu.name}
-                  </h4>
-                  {(menu.childrens || []).length > 0 && <ul>
-                    {menu.childrens.map((chilMenu, childKey) => (
+                  </Link>
+                  {(menu.children || []).length > 0 && <ul>
+                    {menu.children.map((chilMenu, childKey) => (
                       <li key={`${key}-${childKey}`}>
                         <Link
-                          to={chilMenu.url}
+                          to={`/${chilMenu.url_path}`}
                           className="text-sm font-hkregular text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">
                           {chilMenu.name}
                         </Link>

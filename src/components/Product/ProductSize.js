@@ -9,7 +9,7 @@ function ProductSize({sizes, selectedSize}) {
       <div className="w-2/3 sm:w-5/6">
         <select className="w-2/3 form-select">
           {sizes.map((size, key) => (
-            <option value={key} key={key}>{size}</option>
+            <option value={key} key={key}>{size.label}</option>
           ))}
         </select>
       </div>

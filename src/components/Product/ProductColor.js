@@ -10,7 +10,7 @@ function ProductColor({colors, selectedColor}) {
         {colors.map((color, key) => (
           <div
             className="px-2 py-2 rounded-full mr-2"
-            style={{ backgroundColor: color }}
+            style={{ backgroundColor: color.label }}
             key={key}
             onClick={() => selectedColor(color)}
           ></div>

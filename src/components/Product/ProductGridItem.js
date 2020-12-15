@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProductListItemHover from './ProductListItemHover'
 import ProductItemRate from './ProductItemRate'
@@ -7,7 +8,7 @@ const ProductGridItem = ({product}) => (
     <div className="relative rounded flex justify-center items-center">
       <div
         className="w-68 h-68 bg-center bg-no-repeat bg-cover"
-        style={{backgroundImage: `url(${(product.images && product.images.length) > 0 ? product.images[0] : ''})`}}>
+        style={{backgroundImage: `url(${product.thumbnail.url})`}}>
       </div>
       <div className="absolute top-0 right-0 bg-white px-5 py-1 my-4 mx-4 rounded-full">
         <p className="text-v-green font-hkbold text-sm uppercase tracking-wide">
@@ -20,17 +21,17 @@ const ProductGridItem = ({product}) => (
         <ProductListItemHover product={product}/>
       </div>
     </div>
-    <a href="/product" className="flex justify-between items-center pt-6">
+    <Link to={`/p/${product.url_key}`} className="flex justify-between items-center pt-6">
       <div>
         <h3 className="font-hkregular text-base text-secondary">
-          {product.name}
+          {product.thumbnail.label}
         </h3>
         <ProductItemRate product={product}/>
       </div>
       <div>
-        <span className="font-hkbold text-primary text-xl">${product.price}</span>
+        <span className="font-hkbold text-primary text-xl">${product.price_range?.maximum_price?.regular_price?.value}</span>
       </div>
-    </a>
+    </Link>
   </div>
 )
 

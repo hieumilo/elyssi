@@ -13,7 +13,7 @@ const ProductListItemHover = ({product}) => (
       <img src={iconCart} className="h-6 w-6" alt="icon cart" />
     </button>
     <Link
-      to={`/p/${product.slug}`}
+      to={`/p/${product.url_key}`}
       className="bg-white hover:bg-primary-light rounded-full px-3 py-3 flex items-center transition-all mr-3">
       <img src={iconSearch} className="h-6 w-6" alt="icon search" />
     </Link>

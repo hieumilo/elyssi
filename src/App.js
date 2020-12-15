@@ -44,7 +44,10 @@ function App() {
           <Route path="/p/:slug">
             <ProductDetail />
           </Route>
-          <Route path="/:slug">
+          <Route path="/:category/:slug">
+            <ProductList />
+          </Route>
+          <Route path="/:category">
             <ProductList />
           </Route>
           <Route path="/">

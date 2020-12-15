@@ -31,8 +31,7 @@ function ProductTabs({description, additionalInformation, reviews}) {
           className={`tab-pane bg-grey-light py-10 md:py-16 transition-opacity ${activeTab === 'description' ? 'active' : ''}`}
           role="tabpanel">
           <div className="w-5/6 mx-auto text-center sm:text-left">
-            <div className="font-hkregular text-secondary text-base">
-              {description}
+            <div dangerouslySetInnerHTML={{ __html: description?.html }} className="font-hkregular text-secondary text-base">
             </div>
           </div>
         </div>
@@ -48,46 +47,27 @@ function ProductTabs({description, additionalInformation, reviews}) {
         <div
           className={`tab-pane bg-grey-light py-10 md:py-16 transition-opacity ${activeTab === 'reviews' ? 'active' : ''}`}
           role="tabpanel">
-          <div className="w-5/6 mx-auto border-b border-grey-darker pb-8 text-center sm:text-left">
-            <div className="flex justify-center sm:justify-start items-center pt-3 xl:pt-5">
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
+          {reviews.map((review, key) => (
+            <div className="w-5/6 mx-auto border-b border-grey-darker pb-8 text-center sm:text-left" key={key}>
+              <div className="flex justify-center sm:justify-start items-center pt-3 xl:pt-5">
+                {[...Array(+review.ratings_breakdown[0].value).keys()].map((index, key) => (
+                  <i className="bx bxs-star text-primary" key={key}></i>
+                ))}
+              </div>
+              <p className="font-hkbold text-secondary text-lg pt-3">
+                {review.summary}
+              </p>
+              <p className="font-hkregular text-secondary pt-4 lg:w-5/6 xl:w-2/3">
+                I loooveeeee this product!!! It feels so soft and smells like real leather!!! I ordered this fancy backpack looking for something that can be used at work and, at the same time, after work; and I found it. Honestly.. Amazing!!</p>
+              <div className="flex justify-center sm:justify-start items-center pt-3">
+                <p className="font-hkregular text-grey-darkest text-sm">
+                  <span>By</span> {review.nickname}</p>
+                <span className="font-hkregular text-grey-darkest text-sm block px-4">.</span>
+                <p className="font-hkregular text-grey-darkest text-sm">
+                  6 days ago</p>
+              </div>
             </div>
-            <p className="font-hkbold text-secondary text-lg pt-3">
-              Perfect for everyday use</p>
-            <p className="font-hkregular text-secondary pt-4 lg:w-5/6 xl:w-2/3">
-              I loooveeeee this product!!! It feels so soft and smells like real leather!!! I ordered this fancy backpack looking for something that can be used at work and, at the same time, after work; and I found it. Honestly.. Amazing!!</p>
-            <div className="flex justify-center sm:justify-start items-center pt-3">
-              <p className="font-hkregular text-grey-darkest text-sm">
-                <span>By</span> Melanie Ashwood</p>
-              <span className="font-hkregular text-grey-darkest text-sm block px-4">.</span>
-              <p className="font-hkregular text-grey-darkest text-sm">
-                6 days ago</p>
-            </div>
-          </div>
-          <div className="w-5/6 mx-auto border-b border-transparent pb-8 text-center sm:text-left">
-            <div className="flex justify-center sm:justify-start items-center pt-3 xl:pt-5">
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-              <i className="bx bxs-star text-primary"></i>
-            </div>
-            <p className="font-hkbold text-secondary text-lg pt-3">
-              Gift for my girlfriend</p>
-            <p className="font-hkregular text-secondary pt-4 lg:w-5/6 xl:w-2/3">
-              I paid this thing thinking about my girlfriend’s birthday present, however I had my doubts cuz’ she is kind of picky. But Seriously, from now on, Elyssi is my best friend! She loved it!! She’s crazy about it! DISCLAIMER: It is smaller than it appears. </p>
-            <div className="flex justify-center sm:justify-start items-center pt-3">
-              <p className="font-hkregular text-grey-darkest text-sm">
-                <span>By</span> Jake Houston</p>
-              <span className="font-hkregular text-grey-darkest text-sm block px-4">.</span>
-              <p className="font-hkregular text-grey-darkest text-sm">
-                4 days ago</p>
-            </div>
-          </div>
+          ))}
           <form className="w-5/6 mx-auto">
             <div className="flex flex-col sm:flex-row justify-between pt-10 -mx-5">
               <div className="sm:w-1/2 px-5">
@@ -136,7 +116,7 @@ function ProductTabs({description, additionalInformation, reviews}) {
 }
 
 ProductTabs.propTypes = {
-  description: PropTypes.string,
+  description: PropTypes.object,
   additionalInformation: PropTypes.string,
   reviews: PropTypes.array
 }

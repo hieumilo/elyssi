@@ -66,11 +66,11 @@ const MenuMobile = ({menus, showMenuMobile, setShowMenuMobile}) => {
                       mobile-menu-categories bg-v-v-pink max-h-0 overflow-hidden transition-all item-height
                       ${showCategoryChildren === key ? 'active' : ''}
                     `}>
-                    {(menu.childrens || []).length > 0 && <ul>
-                      {menu.childrens.map((chilMenu, childKey) => (
+                    {(menu.children || []).length > 0 && <ul>
+                      {menu.children.map((chilMenu, childKey) => (
                         <li key={`${key}-${childKey}`}>
                           <Link
-                            to={chilMenu.url}
+                            to={chilMenu.url_path}
                             className="p-3 uppercase text-secondary border-t border-grey-darker block">
                             {chilMenu.name}
                           </Link>
