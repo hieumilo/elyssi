@@ -22,10 +22,14 @@ function ProductListItem ({product}) {
         </div>
         <div className="w-full sm:w-3/5 lg:w-6/11 px-6 py-6 sm:py-0">
           <h3 className="font-hkregular text-xl xl:text-2xl text-grey-darkest">
-            {product.thumbnail?.label}
+            {product.name || product.thumbnail?.label}
           </h3>
-          <span className="font-hkbold text-secondary text-xl block pt-1">${product.price_range?.maximum_price?.regular_price?.value}</span>
-          <span className="pt-4 font-hkbold text-v-green text-base block">{product.availability}</span>
+          <span className="font-hkbold text-secondary text-xl block pt-1">
+            ${product.price_range?.maximum_price?.regular_price?.value || 0}
+          </span>
+          <span className="pt-4 font-hkbold text-v-green text-base block">
+            {product.availability}
+          </span>
           <p className="font-hkregular text-grey-darkest pt-2 text-sm xl:text-base">
             {product.short_description?.html}
           </p>

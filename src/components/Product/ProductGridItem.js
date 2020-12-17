@@ -24,12 +24,14 @@ const ProductGridItem = ({product}) => (
     <Link to={`/p/${product.url_key}`} className="flex justify-between items-center pt-6">
       <div>
         <h3 className="font-hkregular text-base text-secondary">
-          {product.thumbnail.label}
+          {product.name || product.thumbnail.label}
         </h3>
         <ProductItemRate product={product}/>
       </div>
       <div>
-        <span className="font-hkbold text-primary text-xl">${product.price_range?.maximum_price?.regular_price?.value}</span>
+        <span className="font-hkbold text-primary text-xl">
+          ${product.price_range?.maximum_price?.regular_price?.value || 0}
+        </span>
       </div>
     </Link>
   </div>

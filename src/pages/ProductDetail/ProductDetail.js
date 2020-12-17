@@ -4,6 +4,8 @@ import ProductBanner from './../../components/Product/Banner'
 import ProductImage from './../../components/Product/ProductImage'
 import ProductDetail from './../../components/Product/ProductDetail'
 import ProductTabs from './../../components/Product/ProductTabs'
+import ProductCarousel from '../../components/Carousel/ProductCarousel';
+import ProductRelated from './../../components/Product/ProductRelated';
 
 function ProductList () {
   let { slug } = useParams();
@@ -31,6 +33,8 @@ function ProductList () {
         additionalInformation={product.additional_information}
         reviews={product.reviews?.items || []}
       />
+
+      {product.related_products && <ProductRelated items={product.related_products} />}
     </div>
   )
 }

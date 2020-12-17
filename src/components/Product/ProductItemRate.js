@@ -9,7 +9,7 @@ const ProductItemRate = ({product, className}) => (
     </div>
     <div>
       <p className="font-hkregular text-sm text-secondary ml-2">
-        ({product.rating_summary})
+        ({product.rating_summary || 0})
       </p>
     </div>
   </div>
