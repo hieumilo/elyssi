@@ -4,7 +4,6 @@ import ProductBanner from './../../components/Product/Banner'
 import ProductImage from './../../components/Product/ProductImage'
 import ProductDetail from './../../components/Product/ProductDetail'
 import ProductTabs from './../../components/Product/ProductTabs'
-import ProductCarousel from '../../components/Carousel/ProductCarousel';
 import ProductRelated from './../../components/Product/ProductRelated';
 
 function ProductList () {

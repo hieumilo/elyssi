@@ -23,11 +23,11 @@ function CartCustomerInfo() {
               </p>
             </div>
             <div className="pt-4 md:pt-5">
-              <label for="email" className="block relative h-0 w-0 overflow-hidden">Email</label>
+              <label htmlFor="email" className="block relative h-0 w-0 overflow-hidden">Email</label>
               <input type="email" placeholder="Enter your email address" className="form-input"
                    id="email"/>
               <div className="flex items-center pt-4">
-                <label for="offers" className="block relative h-0 w-0 overflow-hidden">Sign
+                <label htmlFor="offers" className="block relative h-0 w-0 overflow-hidden">Sign
                   up to exclusive offers</label>
                 <input type="checkbox" className="form-checkbox" id="offers"/>
                 <p className="font-hkregular text-sm pl-3 text-secondary">
@@ -42,35 +42,35 @@ function CartCustomerInfo() {
             </h4>
             <div className="pt-4 md:pt-5">
               <div className="flex justify-between">
-                <label for="first_name" className="block relative h-0 w-0 overflow-hidden">First
+                <label htmlFor="first_name" className="block relative h-0 w-0 overflow-hidden">First
                   Name</label>
                 <input type="text" placeholder="First Name" className="form-input mb-4 sm:mb-5 mr-2"
                      id="first_name"/>
-                <label for="last_name" className="block relative h-0 w-0 overflow-hidden">Last
+                <label htmlFor="last_name" className="block relative h-0 w-0 overflow-hidden">Last
                   Name</label>
                 <input type="text" placeholder="Last Name" className="form-input mb-4 sm:mb-5 ml-1"
                      id="last_name"/>
               </div>
-              <label for="address" className="block relative h-0 w-0 overflow-hidden">Address</label>
+              <label htmlFor="address" className="block relative h-0 w-0 overflow-hidden">Address</label>
               <input type="text" placeholder="You address" className="form-input mb-4 sm:mb-5"
                    id="address"/>
-              <label for="address2" className="block relative h-0 w-0 overflow-hidden">Address
+              <label htmlFor="address2" className="block relative h-0 w-0 overflow-hidden">Address
                 2</label>
               <input type="text" placeholder="Apartment, Suite, etc" className="form-input mb-4 sm:mb-5"
                    id="address2"/>
-              <label for="city" className="block relative h-0 w-0 overflow-hidden">City</label>
+              <label htmlFor="city" className="block relative h-0 w-0 overflow-hidden">City</label>
               <input type="text" placeholder="City" className="form-input mb-4 sm:mb-5" id="city"/>
               <div className="flex justify-between">
-                <label for="country" className="block relative h-0 w-0 overflow-hidden">Country</label>
+                <label htmlFor="country" className="block relative h-0 w-0 overflow-hidden">Country</label>
                 <input type="text" placeholder="Country/Region" className="form-input mb-4 sm:mb-5 mr-2"
                      id="country"/>
-                <label for="post_code" className="block relative h-0 w-0 overflow-hidden">Post
+                <label htmlFor="post_code" className="block relative h-0 w-0 overflow-hidden">Post
                   code</label>
                 <input type="number" placeholder="Post code" className="form-input mb-4 sm:mb-5 ml-1"
                      id="post_code"/>
               </div>
               <div className="flex items-center pt-2">
-                <label for="save_info" className="block relative h-0 w-0 overflow-hidden">Save
+                <label htmlFor="save_info" className="block relative h-0 w-0 overflow-hidden">Save
                   Info</label>
                 <input type="checkbox" className="form-checkbox" id="save_info"/>
                 <p className="font-hkregular text-sm pl-3 text-secondary">

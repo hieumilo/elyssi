@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import ProductItemRate from './ProductItemRate'
 import ProductColor from './ProductColor'
 import ProductSize from './ProductSize'
 import ProductQuantity from './ProductQuantity'
+import {CartContext} from './../../context/CartContext'
 
 const ProductDetail = ({product}) => {
   const [productQuantity, setProductQuantity] = useState(1)
   const [colors, setColors] = useState([])
   const [sizes, setSizes] = useState([])
+  const {addToCart} = useContext(CartContext);
 
   useEffect(() => {
     (product.configurable_options || []).map((item) => {
@@ -28,6 +30,10 @@ const ProductDetail = ({product}) => {
 
   const selectedSize = (size) => {
     console.log(size);
+  }
+
+  const _addToCart = () => {
+    addToCart({product, qty: productQuantity});
   }
 
   return (
@@ -64,9 +70,9 @@ const ProductDetail = ({product}) => {
       <ProductSize sizes={sizes || []} selectedSize={selectedSize} />
       <ProductQuantity productQuantity={productQuantity} setProductQuantity={setProductQuantity} />
       <div className="flex pb-8 group">
-        <a href="/cart" className="btn btn-outline mr-4 md:mr-6">
+        <button className="btn btn-outline mr-4 md:mr-6" onClick={_addToCart}>
           Add to cart
-        </a>
+        </button>
         <a href="/cart" className="btn btn-primary">
           BUY NOW
         </a>

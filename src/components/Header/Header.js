@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import {CartContext} from './../../context/CartContext'
 import MenuDesktop from './../Menu/MenuDesktop'
 import MenuMobile from './../Menu/MenuMobile'
 import imgLogo from './../../assets/img/logo-elyssi.svg'
@@ -15,6 +16,7 @@ import imgCartHover from './../../assets/img/icons/icon-cart-hover.svg'
 function Header() {
   const [menus, setMenus] = useState([])
   const [showMenuMobile, setShowMenuMobile] = useState(false)
+  const cart = useContext(CartContext);
 
   async function getCategories() {
     const data = await fetch("/api/categories")
@@ -82,7 +84,7 @@ function Header() {
             </a>
             <Link
               to="/cart"
-              className="border-2 transition-all border-transparent hover:border-primary rounded-full px-4 py-4 ml-8 group">
+              className="border-2 transition-all border-transparent hover:border-primary rounded-full px-4 py-4 ml-8 group relative">
               <img
                 src={imgCart}
                 className="w-8 h-8 block group-hover:hidden"
@@ -93,6 +95,11 @@ function Header() {
                 className="w-8 h-8 hidden group-hover:block"
                 alt="icon cart hover"
               />
+              {cart.items.length ? (
+                <span class="font-hkregular text-white text-xs px-2 leading-none absolute top-0 right-0 bg-primary flex items-center justify-center rounded-full -mt-2 -mr-2 h-6 w-6">
+                  {cart.items.length}
+                </span>
+              ) : null}
             </Link>
           </div>
         </div>

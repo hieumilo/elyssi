@@ -1,27 +1,33 @@
 import PropTypes from 'prop-types';
+import { CartContext } from './../../context/CartContext'
 import CartItem from "./CartItem"
+import { useContext } from 'react';
 
-function CartList({products}) {
+function CartList() {
+  const cart = useContext(CartContext);
   return (
     <div className="pt-8">
       <div className="hidden sm:block">
         <div className="flex justify-between border-b border-grey-darker">
           <div className="w-1/2 lg:w-3/5 xl:w-1/2 pl-8 sm:pl-12 pb-2">
             <p className="font-hkbold text-secondary text-sm uppercase">
-              Product Name</p>
+              Product Name
+            </p>
           </div>
           <div
             className="w-1/4 sm:w-1/6 lg:w-1/5 xl:w-1/4 pb-2 text-right sm:mr-2 md:mr-18 lg:mr-12 xl:mr-18">
             <p className="font-hkbold text-secondary text-sm uppercase">
-              Quantity</p>
+              Quantity
+            </p>
           </div>
           <div className="w-1/4 lg:w-1/5 xl:w-1/4 pb-2 text-right md:pr-10">
             <p className="font-hkbold text-secondary text-sm uppercase">
-              Price</p>
+              Price
+            </p>
           </div>
         </div>
       </div>
-      {products && products.map((product, key) => <CartItem product={product} key={key}/>)}
+      {cart.items && cart.items.map((product, key) => <CartItem product={product} key={key}/>)}
       <div className="flex md:hidden mb-5 pb-5 border-b border-grey-dark items-center justify-center">
         <div className="relative">
           <div className="w-24 h-24 mx-auto bg-center bg-no-repeat bg-cover"
@@ -34,9 +40,12 @@ function CartList({products}) {
           <span className="font-hkregular text-secondary block">$1045</span>
 
           <div className="w-2/3 sm:w-5/6 flex mt-2">
-            <input type="number" id="quantity-form-mobile"
-                 className="form-input form-quantity rounded-r-none w-12 py-1 px-2 text-center"
-                 x-model="productQuantity" min="1"/>
+            <input
+              type="number"
+              id="quantity-form-mobile"
+              className="form-input form-quantity rounded-r-none w-12 py-1 px-2 text-center"
+              min="1"
+            />
             <div className="flex flex-row">
               <span
                 className="px-2 bg-white flex-1 border  border-l-0 border-grey-darker cursor-pointer flex items-center justify-center"><i
@@ -49,7 +58,6 @@ function CartList({products}) {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
