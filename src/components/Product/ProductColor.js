@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function ProductColor({colors, selectedColor}) {
+function ProductColor({colors, selected, onSelectedColor}) {
   return (
     <div className="flex justify-between pb-4">
       <div className="w-1/3 sm:w-1/5">
@@ -10,9 +10,9 @@ function ProductColor({colors, selectedColor}) {
         {colors.map((color, key) => (
           <div
             className="px-2 py-2 rounded-full mr-2"
-            style={{ backgroundColor: color.label }}
+            style={{ backgroundColor: color.label, borderRadius: color.value_index === selected ? '0' : '9999px' }}
             key={key}
-            onClick={() => selectedColor(color)}
+            onClick={() => onSelectedColor(color.value_index)}
           ></div>
         ))}
       </div>
@@ -22,7 +22,7 @@ function ProductColor({colors, selectedColor}) {
 
 ProductColor.propTypes = {
   colors: PropTypes.array,
-  selectedColor: PropTypes.func,
+  onSelectedColor: PropTypes.func,
 }
 
 export default ProductColor

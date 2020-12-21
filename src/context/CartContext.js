@@ -15,6 +15,7 @@ export const initialState = {
 };
 
 export default function reducer(state, action) {
+    console.log(state, action);
     const {product, qty, id} = action.payload;
     let items = [...state.items];
     let isExistProduct = false;
@@ -22,7 +23,7 @@ export default function reducer(state, action) {
     function calcTotal(items) {
         return items.reduce(
             (accumulator, currentValue) => {
-                return accumulator + (currentValue.qty * (currentValue.price_range?.maximum_price?.regular_price?.value || 0))
+                return accumulator + (currentValue.qty * (currentValue.price_range?.minimum_price?.regular_price?.value || 0))
             },
             0
         )
@@ -53,7 +54,7 @@ export default function reducer(state, action) {
                 if (id === item.id) {
                     return {
                         ...item,
-                        qty: item.qty + qty
+                        qty: item.qty + ((item.qty === 1 && qty === -1) ? 0 : qty)
                     }
                 }
                 return item;

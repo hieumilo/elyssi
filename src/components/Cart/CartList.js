@@ -5,6 +5,7 @@ import { useContext } from 'react';
 
 function CartList() {
   const cart = useContext(CartContext);
+
   return (
     <div className="pt-8">
       <div className="hidden sm:block">
