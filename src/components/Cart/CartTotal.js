@@ -1,10 +1,7 @@
 import {Link} from "react-router-dom";
-import { CartContext } from './../../context/CartContext'
-import { useContext } from 'react';
+import CartPrice from './CartPrice'
 
 function CartTotal () {
-  const cart = useContext(CartContext);
-
   return (
     <div className="sm:w-2/3 md:w-full lg:w-1/3 mx-auto lg:mx-0 mt-16 lg:mt-0">
 
@@ -45,20 +42,7 @@ function CartTotal () {
         <div className="mb-12 pt-4">
           <p className="font-hkbold text-secondary pt-1 pb-2">Cart Total
           </p>
-          <div className="border-b border-grey-darker pb-1 flex justify-between">
-            <span className="font-hkregular text-secondary">Subtotal</span>
-            <span className="font-hkregular text-secondary">${cart.total}</span>
-          </div>
-          <div className="border-b border-grey-darker pt-2 pb-1 flex justify-between">
-            <span className="font-hkregular text-secondary">
-              Coupon applied
-            </span>
-            <span className="font-hkregular text-secondary">$0</span>
-          </div>
-          <div className="pt-3 flex justify-between">
-            <span className="font-hkbold text-secondary">Total</span>
-            <span className="font-hkbold text-secondary">${cart.total}</span>
-          </div>
+          <CartPrice />
         </div>
         <Link to="/customer-info" className="btn btn-primary w-full">Proceed to checkout</Link>
       </div>
